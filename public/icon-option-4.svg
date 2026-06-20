@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+  <!-- Option 4: Stacked bars — World Cup 2026 gradient flag style -->
+  <rect width="512" height="512" rx="96" fill="#0D1442"/>
+  <!-- Three gradient bars (tri-nation nod) -->
+  <rect x="60" y="88" width="392" height="24" rx="12" fill="#00BFA6"/>
+  <rect x="60" y="128" width="392" height="24" rx="12" fill="#FFD600" opacity="0.6"/>
+  <rect x="60" y="168" width="392" height="24" rx="12" fill="#E91E63" opacity="0.4"/>
+  <!-- Large bold FUND text stacked -->
+  <text x="256" y="310" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="140" fill="white" letter-spacing="-4">FUND</text>
+  <!-- GOAL in gradient colors -->
+  <text x="256" y="420" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="100" fill="#FFD600" letter-spacing="12">GOAL</text>
+  <!-- Underline accent -->
+  <rect x="120" y="436" width="272" height="6" rx="3" fill="#00BFA6"/>
+</svg>

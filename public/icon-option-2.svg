@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+  <!-- Option 2: Bold circular badge — soccer ball meets coin -->
+  <defs>
+    <linearGradient id="ring2" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#00BFA6"/>
+      <stop offset="33%" stop-color="#FFD600"/>
+      <stop offset="66%" stop-color="#FF6D00"/>
+      <stop offset="100%" stop-color="#E91E63"/>
+    </linearGradient>
+  </defs>
+  <!-- Dark background -->
+  <rect width="512" height="512" rx="96" fill="#0D1442"/>
+  <!-- Outer gradient ring -->
+  <circle cx="256" cy="256" r="200" fill="none" stroke="url(#ring2)" stroke-width="24"/>
+  <!-- Inner dark circle -->
+  <circle cx="256" cy="256" r="176" fill="#1A237E"/>
+  <!-- Soccer ball pentagon pattern (subtle) -->
+  <polygon points="256,140 296,172 282,220 230,220 216,172" fill="none" stroke="#00BFA6" stroke-width="3" opacity="0.25"/>
+  <polygon points="216,172 176,196 176,256 216,280 230,220" fill="none" stroke="#00BFA6" stroke-width="3" opacity="0.25"/>
+  <polygon points="296,172 336,196 336,256 296,280 282,220" fill="none" stroke="#00BFA6" stroke-width="3" opacity="0.25"/>
+  <!-- Bold F -->
+  <text x="256" y="320" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="220" fill="#FFD600">F</text>
+</svg>

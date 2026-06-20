@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+  <!-- Option 5: Abstract trophy / cup with World Cup colors -->
+  <defs>
+    <linearGradient id="cup5" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#FFD600"/>
+      <stop offset="50%" stop-color="#FF6D00"/>
+      <stop offset="100%" stop-color="#E91E63"/>
+    </linearGradient>
+    <linearGradient id="bg5" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1A237E"/>
+      <stop offset="100%" stop-color="#0D1442"/>
+    </linearGradient>
+  </defs>
+  <rect width="512" height="512" rx="96" fill="url(#bg5)"/>
+  <!-- Trophy cup body -->
+  <path d="M176 120 L336 120 L312 320 Q296 360 256 368 Q216 360 200 320 Z" fill="url(#cup5)"/>
+  <!-- Trophy handles -->
+  <path d="M176 140 Q100 140 100 210 Q100 270 160 280" fill="none" stroke="#00BFA6" stroke-width="16" stroke-linecap="round"/>
+  <path d="M336 140 Q412 140 412 210 Q412 270 352 280" fill="none" stroke="#00BFA6" stroke-width="16" stroke-linecap="round"/>
+  <!-- Trophy stem -->
+  <rect x="236" y="368" width="40" height="48" rx="4" fill="#FFD600"/>
+  <!-- Trophy base -->
+  <rect x="188" y="416" width="136" height="20" rx="10" fill="#00BFA6"/>
+  <!-- Star on trophy -->
+  <polygon points="256,168 268,200 302,200 274,220 284,252 256,232 228,252 238,220 210,200 244,200" fill="#1A237E"/>
+  <!-- Small sparkles -->
+  <circle cx="148" cy="120" r="4" fill="#FFD600" opacity="0.6"/>
+  <circle cx="380" cy="100" r="3" fill="#00BFA6" opacity="0.6"/>
+  <circle cx="400" cy="160" r="5" fill="#E91E63" opacity="0.4"/>
+</svg>

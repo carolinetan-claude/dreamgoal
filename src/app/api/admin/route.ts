@@ -3,7 +3,7 @@ import fs from "fs"
 import path from "path"
 
 const STATE_FILE = path.join(process.cwd(), "public", "match-state.json")
-const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || "fundgoal2026"
+const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || "goalfund2026"
 
 function readState() {
   try {

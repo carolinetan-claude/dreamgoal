@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+  <!-- Option 1: Shield Crest with FG monogram -->
+  <defs>
+    <linearGradient id="shield" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1A237E"/>
+      <stop offset="100%" stop-color="#0D1442"/>
+    </linearGradient>
+    <linearGradient id="accent1" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#00BFA6"/>
+      <stop offset="100%" stop-color="#FFD600"/>
+    </linearGradient>
+  </defs>
+  <!-- Shield shape -->
+  <path d="M256 32 L448 112 L448 288 Q448 420 256 480 Q64 420 64 288 L64 112 Z" fill="url(#shield)" stroke="url(#accent1)" stroke-width="8"/>
+  <!-- Horizontal stripe -->
+  <rect x="64" y="200" width="384" height="6" fill="#FFD600" opacity="0.3"/>
+  <rect x="64" y="300" width="384" height="6" fill="#E91E63" opacity="0.3"/>
+  <!-- FG text -->
+  <text x="256" y="310" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="200" fill="#FFD600" letter-spacing="-12">FG</text>
+  <!-- Small star above -->
+  <polygon points="256,80 264,104 290,104 270,118 278,142 256,128 234,142 242,118 222,104 248,104" fill="#00BFA6"/>
+</svg>
