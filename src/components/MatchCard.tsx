@@ -2,7 +2,6 @@
 
 import Link from "next/link"
 import { Match, MatchStatus } from "@/lib/matches"
-import { PlayerSilhouette, isLightColor } from "./PlayerSilhouettes"
 
 function StatusBadge({ status }: { status: MatchStatus }) {
   if (status === "live") {
@@ -48,8 +47,8 @@ function StatusBadge({ status }: { status: MatchStatus }) {
   return (
     <span
       style={{
-        background: "rgba(255,255,255,0.1)",
-        color: "#888",
+        background: "rgba(0,0,0,0.08)",
+        color: "#666",
         fontSize: "0.6rem",
         fontWeight: 600,
         textTransform: "uppercase",
@@ -67,11 +66,6 @@ export function MatchCard({ match }: { match: Match }) {
   const totalSol = match.totalSol || 0
   const isResolved = match.status === "resolved"
 
-  const colorA = match.teamA.jerseyColor
-  const colorB = match.teamB.jerseyColor
-  const textA = isLightColor(colorA) ? "#0a0a0a" : "#FFFFFF"
-  const textB = isLightColor(colorB) ? "#0a0a0a" : "#FFFFFF"
-
   return (
     <Link href={`/match/${match.id}`} style={{ textDecoration: "none" }}>
       <div
@@ -82,65 +76,28 @@ export function MatchCard({ match }: { match: Match }) {
           cursor: "pointer",
           transition: "transform 0.25s ease, box-shadow 0.25s ease",
           boxShadow: "0 4px 24px rgba(0,0,0,0.4)",
-          border: "1px solid rgba(255,255,255,0.06)",
+          border: "2px solid #F0B90B",
         }}
         onMouseEnter={(e) => {
           (e.currentTarget as HTMLDivElement).style.transform = "translateY(-6px) scale(1.01)"
-          ;(e.currentTarget as HTMLDivElement).style.boxShadow = "0 12px 40px rgba(0,0,0,0.6)"
+          ;(e.currentTarget as HTMLDivElement).style.boxShadow = "0 12px 40px rgba(240,185,11,0.3)"
         }}
         onMouseLeave={(e) => {
           (e.currentTarget as HTMLDivElement).style.transform = "translateY(0) scale(1)"
           ;(e.currentTarget as HTMLDivElement).style.boxShadow = "0 4px 24px rgba(0,0,0,0.4)"
         }}
       >
-        {/* === PVP Arena — Split Diagonal === */}
+        {/* === White arena with flags === */}
         <div
           style={{
             position: "relative",
-            height: "220px",
-            overflow: "hidden",
+            height: "200px",
+            background: "#FFFFFF",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
           }}
         >
-          {/* Team A half — left */}
-          <div
-            style={{
-              position: "absolute",
-              top: 0,
-              left: 0,
-              width: "100%",
-              height: "100%",
-              background: colorA,
-              clipPath: "polygon(0 0, 55% 0, 45% 100%, 0 100%)",
-            }}
-          />
-
-          {/* Team B half — right */}
-          <div
-            style={{
-              position: "absolute",
-              top: 0,
-              left: 0,
-              width: "100%",
-              height: "100%",
-              background: colorB,
-              clipPath: "polygon(55% 0, 100% 0, 100% 100%, 45% 100%)",
-            }}
-          />
-
-          {/* Dark diagonal slash in the center */}
-          <div
-            style={{
-              position: "absolute",
-              top: 0,
-              left: 0,
-              width: "100%",
-              height: "100%",
-              background: "#0a0a0a",
-              clipPath: "polygon(48% 0, 52% 0, 48% 100%, 44% 100%)",
-              zIndex: 2,
-            }}
-          />
-
           {/* Group badge top-left */}
           <div
             style={{
@@ -152,8 +109,7 @@ export function MatchCard({ match }: { match: Match }) {
               fontWeight: 600,
               textTransform: "uppercase",
               letterSpacing: "0.1em",
-              color: textA,
-              opacity: 0.7,
+              color: "#999",
             }}
           >
             {match.group}
@@ -164,87 +120,29 @@ export function MatchCard({ match }: { match: Match }) {
             <StatusBadge status={match.status} />
           </div>
 
-          {/* Team A — left side */}
+          {/* Team A — left */}
           <div
             style={{
-              position: "absolute",
-              top: 0,
-              left: 0,
-              width: "45%",
-              height: "100%",
+              flex: 1,
               display: "flex",
               flexDirection: "column",
               alignItems: "center",
               justifyContent: "center",
-              zIndex: 3,
-              paddingTop: "24px",
+              gap: "8px",
+              paddingTop: "16px",
             }}
           >
-            {/* Silhouette */}
-            <div style={{ opacity: 0.25, marginBottom: "4px" }}>
-              <PlayerSilhouette
-                position={match.teamA.position}
-                facing="right"
-                color={textA}
-                size={90}
-              />
-            </div>
-            {/* Flag + Name */}
-            <div style={{ textAlign: "center" }}>
-              <div style={{ fontSize: "1.4rem", marginBottom: "2px" }}>{match.teamA.flag}</div>
-              <div
-                style={{
-                  fontSize: "0.75rem",
-                  fontWeight: 800,
-                  textTransform: "uppercase",
-                  letterSpacing: "0.02em",
-                  color: textA,
-                }}
-              >
-                {match.teamA.name}
-              </div>
-            </div>
-          </div>
-
-          {/* Team B — right side */}
-          <div
-            style={{
-              position: "absolute",
-              top: 0,
-              right: 0,
-              width: "45%",
-              height: "100%",
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-              justifyContent: "center",
-              zIndex: 3,
-              paddingTop: "24px",
-            }}
-          >
-            {/* Silhouette */}
-            <div style={{ opacity: 0.25, marginBottom: "4px" }}>
-              <PlayerSilhouette
-                position={match.teamB.position}
-                facing="left"
-                color={textB}
-                size={90}
-              />
-            </div>
-            {/* Flag + Name */}
-            <div style={{ textAlign: "center" }}>
-              <div style={{ fontSize: "1.4rem", marginBottom: "2px" }}>{match.teamB.flag}</div>
-              <div
-                style={{
-                  fontSize: "0.75rem",
-                  fontWeight: 800,
-                  textTransform: "uppercase",
-                  letterSpacing: "0.02em",
-                  color: textB,
-                }}
-              >
-                {match.teamB.name}
-              </div>
+            <div style={{ fontSize: "4rem", lineHeight: 1 }}>{match.teamA.flag}</div>
+            <div
+              style={{
+                fontSize: "0.8rem",
+                fontWeight: 800,
+                textTransform: "uppercase",
+                letterSpacing: "0.02em",
+                color: "#0a0a0a",
+              }}
+            >
+              {match.teamA.name}
             </div>
           </div>
 
@@ -252,10 +150,6 @@ export function MatchCard({ match }: { match: Match }) {
           <div
             className="vs-badge"
             style={{
-              position: "absolute",
-              top: "50%",
-              left: "50%",
-              transform: "translate(-50%, -50%)",
               zIndex: 10,
               background: "#F0B90B",
               color: "#0a0a0a",
@@ -268,14 +162,41 @@ export function MatchCard({ match }: { match: Match }) {
               alignItems: "center",
               justifyContent: "center",
               boxShadow: "0 0 20px rgba(240,185,11,0.4), 0 0 40px rgba(240,185,11,0.15)",
-              border: "2px solid rgba(0,0,0,0.2)",
+              border: "2px solid rgba(0,0,0,0.1)",
+              flexShrink: 0,
             }}
           >
             VS
           </div>
+
+          {/* Team B — right */}
+          <div
+            style={{
+              flex: 1,
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              justifyContent: "center",
+              gap: "8px",
+              paddingTop: "16px",
+            }}
+          >
+            <div style={{ fontSize: "4rem", lineHeight: 1 }}>{match.teamB.flag}</div>
+            <div
+              style={{
+                fontSize: "0.8rem",
+                fontWeight: 800,
+                textTransform: "uppercase",
+                letterSpacing: "0.02em",
+                color: "#0a0a0a",
+              }}
+            >
+              {match.teamB.name}
+            </div>
+          </div>
         </div>
 
-        {/* === Dark footer strip — projects, pool, CTA === */}
+        {/* === Dark footer strip === */}
         <div
           style={{
             background: "#0a0a0a",
@@ -309,7 +230,7 @@ export function MatchCard({ match }: { match: Match }) {
             </div>
             <div style={{ textAlign: "right" }}>
               <div style={{ fontSize: "0.6rem", color: "#444", textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: "2px" }}>
-                ♥ World Vision
+                World Vision
               </div>
               <div style={{ fontFamily: "monospace", fontWeight: 700, color: isResolved ? "#1DB954" : "#F0B90B", fontSize: "0.9rem" }}>
                 {totalSol.toFixed(2)} SOL
