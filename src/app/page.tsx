@@ -90,9 +90,7 @@ export default async function Home() {
           <div
             key={s.step}
             style={{
-              background: "rgba(10,10,10,0.85)",
-              backdropFilter: "blur(8px)",
-              border: "1px solid rgba(255,255,255,0.06)",
+              background: "#F0B90B",
               borderRadius: "12px",
               padding: "16px 20px",
               flex: "1",
@@ -103,7 +101,7 @@ export default async function Home() {
             <div
               style={{
                 fontSize: "0.65rem",
-                color: "#F0B90B",
+                color: "rgba(0,0,0,0.5)",
                 fontWeight: 700,
                 textTransform: "uppercase",
                 letterSpacing: "0.1em",
@@ -116,7 +114,7 @@ export default async function Home() {
               style={{
                 fontSize: "0.9rem",
                 fontWeight: 800,
-                color: "#fff",
+                color: "#0a0a0a",
                 textTransform: "uppercase",
                 letterSpacing: "-0.01em",
                 marginBottom: "4px",
@@ -124,7 +122,7 @@ export default async function Home() {
             >
               {s.title}
             </div>
-            <div style={{ fontSize: "0.8rem", color: "#888" }}>{s.desc}</div>
+            <div style={{ fontSize: "0.8rem", color: "rgba(0,0,0,0.55)" }}>{s.desc}</div>
           </div>
         ))}
       </div>
@@ -146,9 +144,7 @@ export default async function Home() {
       {/* Charity banner */}
       <div
         style={{
-          background: "rgba(10,10,10,0.85)",
-          backdropFilter: "blur(8px)",
-          border: "1px solid rgba(255,255,255,0.06)",
+          background: "#F0B90B",
           borderRadius: "12px",
           padding: "20px 24px",
           display: "flex",
@@ -159,13 +155,13 @@ export default async function Home() {
       >
         <div style={{ fontSize: "2rem" }}>🌍</div>
         <div style={{ flex: 1, minWidth: "200px" }}>
-          <div style={{ fontWeight: 700, fontSize: "0.95rem", color: "#fff", marginBottom: "2px" }}>
+          <div style={{ fontWeight: 700, fontSize: "0.95rem", color: "#0a0a0a", marginBottom: "2px" }}>
             {CHARITY_NAME} United States
           </div>
-          <div style={{ fontSize: "0.78rem", color: "#888" }}>
+          <div style={{ fontSize: "0.78rem", color: "rgba(0,0,0,0.6)" }}>
             70+ years empowering children &amp; communities out of poverty · EIN: 95-1922279 · 501(c)(3)
           </div>
-          <div style={{ fontSize: "0.72rem", color: "#666", marginTop: "2px" }}>
+          <div style={{ fontSize: "0.72rem", color: "rgba(0,0,0,0.45)", marginTop: "2px" }}>
             Accepts SOL &amp; all major crypto via The Giving Block
           </div>
         </div>
@@ -177,8 +173,8 @@ export default async function Home() {
             fontSize: "0.7rem",
             padding: "6px 14px",
             borderRadius: "6px",
-            background: "#1DB954",
-            color: "#0a0a0a",
+            background: "#0a0a0a",
+            color: "#F0B90B",
             fontWeight: 700,
             textTransform: "uppercase",
             letterSpacing: "0.08em",
