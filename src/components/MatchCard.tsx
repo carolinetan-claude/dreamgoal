@@ -306,8 +306,8 @@ export function MatchCard({ match }: { match: Match }) {
               <div style={{ fontFamily: "monospace", fontWeight: 900, color: "#FFFFFF", fontSize: "1.4rem" }}>
                 {totalSol.toFixed(2)} <span style={{ color: "#F0B90B" }}>SOL</span>
               </div>
-              <div style={{ fontSize: "0.68rem", color: "#888", marginTop: "2px" }}>
-                (${Math.round(totalSol * SOL_USD_PRICE).toLocaleString()} USD)
+              <div style={{ fontSize: "0.9rem", fontWeight: 700, color: "#1DB954", marginTop: "4px" }}>
+                ${Math.round(totalSol * SOL_USD_PRICE).toLocaleString()} USD
               </div>
             </div>
             <div style={{ width: "1px", height: "36px", background: "#2a2a2a" }} />
