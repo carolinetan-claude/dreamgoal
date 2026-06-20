@@ -2,44 +2,55 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>DreamFund — Pitch Deck</title>
+<title>DreamFund — Pitch Deck (Screenshot Each Slide)</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap');
   * { margin: 0; padding: 0; box-sizing: border-box; }
-  body { font-family: 'Inter', sans-serif; background: #0a0a0a; color: #fff; }
-  .slide {
-    width: 100vw; height: 100vh;
+  body {
+    font-family: 'Inter', sans-serif;
+    background: #1a1a1a;
     display: flex; flex-direction: column;
-    justify-content: center; align-items: center;
-    padding: 60px 100px;
-    position: relative;
-    overflow: hidden;
+    align-items: center; gap: 40px;
+    padding: 40px 0;
+  }
+  .label {
+    color: #888; font-size: 14px; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.1em;
+    margin-bottom: 8px; text-align: center;
+  }
+  .slide {
+    width: 1920px; height: 1080px;
+    background: #0a0a0a; color: #fff;
+    position: relative; overflow: hidden;
+    flex-shrink: 0;
+    display: flex; flex-direction: column;
+    justify-content: center;
+    padding: 80px 120px;
   }
   .slide::before {
     content: ''; position: absolute; inset: 0;
-    background: radial-gradient(ellipse at 30% 50%, rgba(240,185,11,0.06) 0%, transparent 60%);
+    background: radial-gradient(ellipse at 25% 50%, rgba(240,185,11,0.05) 0%, transparent 60%);
     pointer-events: none;
   }
   .gold { color: #F0B90B; }
   .green { color: #1DB954; }
   .red { color: #ff6b6b; }
-  .dim { color: #888; }
   .tag {
     display: inline-block;
     background: #F0B90B; color: #0a0a0a;
-    font-size: 0.7rem; font-weight: 800;
+    font-size: 14px; font-weight: 800;
     text-transform: uppercase; letter-spacing: 0.15em;
-    padding: 6px 16px; border-radius: 6px;
-    margin-bottom: 24px;
+    padding: 8px 20px; border-radius: 8px;
+    margin-bottom: 32px;
   }
-  h1 { font-size: 3rem; font-weight: 900; line-height: 1.15; margin-bottom: 20px; max-width: 900px; }
-  h2 { font-size: 2.2rem; font-weight: 900; line-height: 1.2; margin-bottom: 16px; }
-  h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 8px; color: #F0B90B; }
-  p { font-size: 1.05rem; color: #bbb; line-height: 1.7; max-width: 800px; }
-  .content { position: relative; z-index: 1; width: 100%; max-width: 1100px; }
-  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin-top: 32px; }
-  .grid3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 24px; margin-top: 32px; }
+  h1 { font-size: 56px; font-weight: 900; line-height: 1.1; margin-bottom: 24px; }
+  h2 { font-size: 42px; font-weight: 900; line-height: 1.15; margin-bottom: 20px; }
+  h3 { font-size: 18px; font-weight: 700; margin-bottom: 10px; color: #F0B90B; }
+  p { font-size: 20px; color: #bbb; line-height: 1.6; }
+  .z { position: relative; z-index: 1; }
+  .grid3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 28px; }
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+  .grid4 { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 20px; }
   .card {
     background: #141414; border-radius: 16px; padding: 28px;
     border: 1px solid rgba(255,255,255,0.06);
@@ -49,70 +60,77 @@
     border: 1px solid rgba(240,185,11,0.2);
     border-radius: 16px; padding: 28px;
   }
-  .stat { font-family: 'Inter', monospace; font-size: 2.5rem; font-weight: 900; color: #F0B90B; }
-  .stat-label { font-size: 0.75rem; color: #888; text-transform: uppercase; letter-spacing: 0.1em; margin-top: 4px; }
-  .step-num { font-size: 2rem; font-weight: 900; color: #F0B90B; margin-bottom: 8px; }
+  .stat { font-size: 52px; font-weight: 900; color: #F0B90B; }
+  .stat-label { font-size: 14px; color: #888; text-transform: uppercase; letter-spacing: 0.1em; margin-top: 6px; }
+  .step-num { font-size: 36px; font-weight: 900; color: #F0B90B; margin-bottom: 10px; }
   ul { list-style: none; padding: 0; }
-  ul li { padding: 8px 0; font-size: 0.95rem; color: #ccc; line-height: 1.5; display: flex; gap: 10px; }
+  ul li { padding: 6px 0; font-size: 17px; color: #ccc; line-height: 1.5; display: flex; gap: 10px; }
   ul li::before { content: '→'; color: #F0B90B; font-weight: 700; flex-shrink: 0; }
   .logo {
     position: absolute; top: 40px; left: 60px;
-    font-size: 1rem; font-weight: 900; text-transform: uppercase;
-    letter-spacing: -0.01em; color: #fff;
+    font-size: 20px; font-weight: 900; text-transform: uppercase; color: #fff;
   }
   .slide-num {
     position: absolute; bottom: 40px; right: 60px;
-    font-size: 0.75rem; color: #444; font-weight: 600;
+    font-size: 16px; color: #444; font-weight: 600;
   }
   .solana-badge {
     position: absolute; bottom: 40px; left: 60px;
-    font-size: 0.7rem; color: #888; display: flex; align-items: center; gap: 6px;
+    font-size: 14px; color: #666;
   }
-  .divider { width: 60px; height: 3px; background: #F0B90B; border-radius: 2px; margin: 20px 0; }
-  .flow-row { display: flex; gap: 16px; margin-top: 24px; align-items: stretch; }
+  .divider { width: 80px; height: 4px; background: #F0B90B; border-radius: 2px; margin: 24px 0; }
+  .flow-row { display: flex; gap: 20px; align-items: stretch; }
   .flow-step {
-    flex: 1; background: #141414; border-radius: 12px; padding: 20px;
-    border-top: 3px solid #F0B90B; text-align: center;
+    flex: 1; background: #141414; border-radius: 14px; padding: 24px;
+    border-top: 4px solid #F0B90B; text-align: center;
   }
   .avatar {
-    width: 120px; height: 120px; border-radius: 50%;
+    width: 140px; height: 140px; border-radius: 50%;
     background: linear-gradient(135deg, #F0B90B, #D4A00A);
     display: flex; align-items: center; justify-content: center;
-    font-size: 3rem; margin-bottom: 20px;
+    font-size: 60px; margin-bottom: 24px;
   }
   .team-card {
-    display: flex; align-items: center; gap: 32px;
-    background: #141414; border-radius: 20px; padding: 40px;
-    border: 2px solid #F0B90B;
+    display: flex; flex-direction: column; align-items: center;
+    background: #141414; border-radius: 24px; padding: 48px;
+    border: 2px solid #F0B90B; text-align: center; max-width: 700px;
   }
   .big-quote {
-    font-size: 1.8rem; font-weight: 700; font-style: italic;
-    color: #F0B90B; line-height: 1.4; margin: 24px 0;
-    max-width: 700px;
+    font-size: 32px; font-weight: 700; font-style: italic;
+    color: #F0B90B; line-height: 1.4; margin: 28px 0; max-width: 700px;
+    text-align: center;
   }
+  .link-card {
+    background: #141414; border-radius: 12px; padding: 18px 32px;
+    text-align: center; border: 1px solid rgba(255,255,255,0.06);
+  }
+  .link-label { font-size: 12px; color: #888; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 4px; }
+  .link-url { font-size: 18px; font-weight: 700; color: #F0B90B; }
 </style>
 </head>
 <body>
 
+<div class="label">SLIDE 1 — Screenshot this (1920×1080)</div>
+
 <!-- SLIDE 1: PROBLEM -->
 <div class="slide">
-  <div class="logo">DREAMFUND</div>
-  <div class="content">
+  <div class="logo">⚽ DREAMFUND</div>
+  <div class="z">
     <div class="tag">Problem Statement</div>
     <h1>The World Cup generates <span class="gold">billions</span>.<br>Almost none goes back.</h1>
     <div class="divider"></div>
-    <div class="grid3" style="margin-top: 24px;">
+    <div class="grid3" style="margin-top: 28px;">
       <div class="card">
         <h3>💰 The Money Problem</h3>
-        <p style="font-size: 0.9rem;">FIFA generated <strong style="color:#fff">$7.5B</strong> from the 2022 World Cup. Grassroots football programs in qualifying nations remain chronically underfunded.</p>
+        <p style="font-size:17px;">FIFA generated <strong style="color:#fff">$7.5B</strong> from the 2022 World Cup. Grassroots football programs in qualifying nations remain chronically underfunded.</p>
       </div>
       <div class="card">
         <h3>🔍 The Transparency Problem</h3>
-        <p style="font-size: 0.9rem;">Traditional charity donations are opaque. Donors never know if their money actually reached the project — and there's no emotional connection to the outcome.</p>
+        <p style="font-size:17px;">Traditional charity donations are opaque. Donors never know if their money reached the project — and there's no emotional connection to the outcome.</p>
       </div>
       <div class="card">
         <h3>😔 The Engagement Problem</h3>
-        <p style="font-size: 0.9rem;">Fans want to give back but have no direct, transparent way to fund projects in the countries they're cheering for. Watching feels passive.</p>
+        <p style="font-size:17px;">Fans want to give back but have no direct, transparent way to fund projects in the countries they're cheering for. Watching feels passive.</p>
       </div>
     </div>
   </div>
@@ -120,50 +138,52 @@
   <div class="slide-num">01 / 04</div>
 </div>
 
+<div class="label">SLIDE 2 — Screenshot this (1920×1080)</div>
+
 <!-- SLIDE 2: SOLUTION -->
 <div class="slide">
-  <div class="logo">DREAMFUND</div>
-  <div class="content">
+  <div class="logo">⚽ DREAMFUND</div>
+  <div class="z">
     <div class="tag">Solution</div>
-    <h2 style="max-width: 900px;">Back a World Cup team. If they win, <span class="gold">100% of the pool</span> funds a real youth project in that country.</h2>
-    <p style="margin-bottom: 8px;">Verified on Solana. No middlemen. No fees.</p>
+    <h2 style="max-width:1200px;">Back a World Cup team. If they win, <span class="gold">100% of the pool</span> funds a real youth project in that country.</h2>
+    <p style="margin-bottom:12px; font-size:18px;">Verified on Solana. No middlemen. No fees. Win or lose, a dream gets funded.</p>
 
-    <div class="flow-row">
+    <div class="flow-row" style="margin-top:20px;">
       <div class="flow-step">
         <div class="step-num">01</div>
-        <div style="font-weight:800; font-size:0.9rem; text-transform:uppercase; margin-bottom:6px;">Pick a Match</div>
-        <div style="font-size:0.82rem; color:#888;">Choose from live World Cup matches</div>
+        <div style="font-weight:800; font-size:18px; text-transform:uppercase; margin-bottom:8px;">Pick a Match</div>
+        <div style="font-size:16px; color:#888;">Choose from live World Cup matches with real stakes</div>
       </div>
       <div class="flow-step">
         <div class="step-num">02</div>
-        <div style="font-weight:800; font-size:0.9rem; text-transform:uppercase; margin-bottom:6px;">Back a Team</div>
-        <div style="font-size:0.82rem; color:#888;">Pledge SOL — see exactly which dream your funds support</div>
+        <div style="font-weight:800; font-size:18px; text-transform:uppercase; margin-bottom:8px;">Back a Team</div>
+        <div style="font-size:16px; color:#888;">Pledge SOL — see exactly which dream your funds support</div>
       </div>
       <div class="flow-step">
         <div class="step-num">03</div>
-        <div style="font-weight:800; font-size:0.9rem; text-transform:uppercase; margin-bottom:6px;">Dream Gets Funded</div>
-        <div style="font-size:0.82rem; color:#888;">Win or lose, a dream gets funded. 100% on-chain.</div>
+        <div style="font-weight:800; font-size:18px; text-transform:uppercase; margin-bottom:8px;">Dream Gets Funded</div>
+        <div style="font-size:16px; color:#888;">Win → your project funded. Lose → the other project funded. Either way, impact.</div>
       </div>
     </div>
 
-    <div class="card-gold" style="margin-top: 24px;">
-      <h3 style="margin-bottom: 12px;">⚡ Why Solana?</h3>
-      <div style="display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 20px;">
+    <div class="card-gold" style="margin-top:24px;">
+      <h3 style="margin-bottom:14px;">⚡ Why Solana?</h3>
+      <div class="grid4">
         <div>
-          <div style="font-weight:800; font-size:0.85rem; color:#fff; margin-bottom:4px;">~400ms settlement</div>
-          <div style="font-size:0.78rem; color:#888;">Funds move the moment a match ends</div>
+          <div style="font-weight:800; font-size:17px; color:#fff; margin-bottom:6px;">~400ms settlement</div>
+          <div style="font-size:15px; color:#888;">Funds move the moment a match ends</div>
         </div>
         <div>
-          <div style="font-weight:800; font-size:0.85rem; color:#fff; margin-bottom:4px;">Near-zero fees</div>
-          <div style="font-size:0.78rem; color:#888;">No 3-5% payment processor cuts</div>
+          <div style="font-weight:800; font-size:17px; color:#fff; margin-bottom:6px;">Near-zero fees</div>
+          <div style="font-size:15px; color:#888;">No 3-5% payment processor cuts</div>
         </div>
         <div>
-          <div style="font-weight:800; font-size:0.85rem; color:#fff; margin-bottom:4px;">On-chain transparency</div>
-          <div style="font-size:0.78rem; color:#888;">Every pledge verifiable on Solscan</div>
+          <div style="font-weight:800; font-size:17px; color:#fff; margin-bottom:6px;">On-chain transparency</div>
+          <div style="font-size:15px; color:#888;">Every pledge verifiable on Solscan</div>
         </div>
         <div>
-          <div style="font-weight:800; font-size:0.85rem; color:#fff; margin-bottom:4px;">Phantom wallet UX</div>
-          <div style="font-size:0.78rem; color:#888;">One-click funding, no forms or KYC</div>
+          <div style="font-weight:800; font-size:17px; color:#fff; margin-bottom:6px;">Phantom wallet UX</div>
+          <div style="font-size:15px; color:#888;">One-click funding, no forms or KYC</div>
         </div>
       </div>
     </div>
@@ -172,36 +192,38 @@
   <div class="slide-num">02 / 04</div>
 </div>
 
+<div class="label">SLIDE 3 — Screenshot this (1920×1080)</div>
+
 <!-- SLIDE 3: PMF -->
 <div class="slide">
-  <div class="logo">DREAMFUND</div>
-  <div class="content">
+  <div class="logo">⚽ DREAMFUND</div>
+  <div class="z">
     <div class="tag">Problem-Market Fit</div>
     <h2>The right product at the <span class="gold">right moment</span></h2>
 
-    <div class="grid3" style="margin-top: 20px;">
+    <div class="grid3" style="margin-top:24px;">
       <div class="card" style="text-align:center;">
         <div class="stat">5B+</div>
-        <div class="stat-label">World Cup 2026 viewers</div>
-        <div style="margin-top:12px; font-size:0.85rem; color:#888;">The biggest sporting event on Earth, happening right now across the US, Mexico & Canada</div>
+        <div class="stat-label">World Cup 2026 expected viewers</div>
+        <div style="margin-top:14px; font-size:16px; color:#888;">The biggest sporting event on Earth — happening right now</div>
       </div>
       <div class="card" style="text-align:center;">
         <div class="stat">$2B+</div>
         <div class="stat-label">Crypto donations via The Giving Block</div>
-        <div style="margin-top:12px; font-size:0.85rem; color:#888;">Crypto donors exist, are growing, and want transparent impact</div>
+        <div style="margin-top:14px; font-size:16px; color:#888;">Crypto donors exist, are growing, and want transparent impact</div>
       </div>
       <div class="card" style="text-align:center;">
         <div class="stat">∞</div>
-        <div class="stat-label">Prediction market engagement</div>
-        <div style="margin-top:12px; font-size:0.85rem; color:#888;">Polymarket proved people stake real money on real outcomes. DreamFund adds charitable impact.</div>
+        <div class="stat-label">Prediction market demand</div>
+        <div style="margin-top:14px; font-size:16px; color:#888;">Polymarket proved people stake real money on outcomes. We add impact.</div>
       </div>
     </div>
 
-    <div class="grid2" style="margin-top: 24px;">
+    <div class="grid2" style="margin-top:24px;">
       <div class="card-gold">
         <h3>👥 Who uses DreamFund?</h3>
         <ul>
-          <li>Crypto-native football fans with Phantom wallets looking for meaningful ways to use SOL</li>
+          <li>Crypto-native football fans with Phantom wallets</li>
           <li>Impact-driven donors frustrated by opaque NGO overhead</li>
           <li>World Cup communities in qualifying nations</li>
         </ul>
@@ -209,9 +231,9 @@
       <div class="card-gold">
         <h3>🔥 Why they care</h3>
         <ul>
-          <li>Turns passive watching into active impact — your team winning literally changes a community</li>
-          <li>Prediction-style mechanic creates real engagement traditional donation platforms can't match</li>
-          <li>Countdown timers + pool sizes + backer counts = social proof and urgency</li>
+          <li>Your team winning literally changes a community</li>
+          <li>Prediction-style mechanic creates real engagement</li>
+          <li>Countdown timers + pool sizes = urgency & social proof</li>
         </ul>
       </div>
     </div>
@@ -220,29 +242,31 @@
   <div class="slide-num">03 / 04</div>
 </div>
 
+<div class="label">SLIDE 4 — Screenshot this (1920×1080)</div>
+
 <!-- SLIDE 4: TEAM -->
-<div class="slide">
-  <div class="logo">DREAMFUND</div>
-  <div class="content" style="display:flex; flex-direction:column; align-items:center; text-align:center;">
+<div class="slide" style="align-items:center;">
+  <div class="logo">⚽ DREAMFUND</div>
+  <div class="z" style="display:flex; flex-direction:column; align-items:center; text-align:center;">
     <div class="tag">Team</div>
 
-    <div class="team-card" style="flex-direction:column; text-align:center; max-width:700px;">
+    <div class="team-card">
       <div class="avatar">👩‍💻</div>
-      <h2 style="margin-bottom:4px;">Caroline Tan</h2>
-      <p style="color:#F0B90B; font-weight:600; font-size:0.9rem; margin-bottom:16px;">Solo Builder</p>
-      <p style="text-align:center;">Built DreamFund from idea to live product during the Solana hackathon — combining prediction markets with charitable giving to turn World Cup fandom into real-world impact.</p>
+      <h2 style="margin-bottom:6px;">Caroline Tan</h2>
+      <p style="color:#F0B90B; font-weight:600; font-size:18px; margin-bottom:20px;">Solo Builder</p>
+      <p style="text-align:center; font-size:19px;">Built DreamFund from idea to live product during the Solana hackathon — combining prediction markets with charitable giving to turn World Cup fandom into real-world impact.</p>
     </div>
 
-    <div class="big-quote">"Every goal starts with a dream, that you have the power to fund."</div>
+    <div class="big-quote">"Every goal starts with a dream,<br>that you have the power to fund."</div>
 
-    <div style="display:flex; gap:24px; margin-top:16px;">
-      <div class="card" style="text-align:center; padding:16px 28px;">
-        <div style="font-size:0.65rem; color:#888; text-transform:uppercase; letter-spacing:0.1em; margin-bottom:4px;">Live Demo</div>
-        <div style="font-size:0.9rem; font-weight:700; color:#F0B90B;">dreamfund-app.vercel.app</div>
+    <div style="display:flex; gap:24px; margin-top:12px;">
+      <div class="link-card">
+        <div class="link-label">Live Demo</div>
+        <div class="link-url">dreamfund-app.vercel.app</div>
       </div>
-      <div class="card" style="text-align:center; padding:16px 28px;">
-        <div style="font-size:0.65rem; color:#888; text-transform:uppercase; letter-spacing:0.1em; margin-bottom:4px;">GitHub</div>
-        <div style="font-size:0.9rem; font-weight:700; color:#F0B90B;">github.com/carolinetan-claude/fundgoal</div>
+      <div class="link-card">
+        <div class="link-label">GitHub</div>
+        <div class="link-url">github.com/carolinetan-claude/fundgoal</div>
       </div>
     </div>
   </div>
