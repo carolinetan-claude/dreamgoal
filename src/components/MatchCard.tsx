@@ -4,20 +4,22 @@ import { useState, useEffect } from "react"
 import Link from "next/link"
 import { Match, MatchStatus } from "@/lib/matches"
 
+const MATCH_DURATION_MS = 90 * 60 * 1000
+
 function useCountdown(kickoff: string) {
+  const endTime = new Date(kickoff).getTime() + MATCH_DURATION_MS
+
   const [timeLeft, setTimeLeft] = useState(() => {
-    const diff = new Date(kickoff).getTime() - Date.now()
-    return Math.max(0, Math.floor(diff / 1000))
+    return Math.max(0, Math.floor((endTime - Date.now()) / 1000))
   })
 
   useEffect(() => {
     if (timeLeft <= 0) return
     const timer = setInterval(() => {
-      const diff = new Date(kickoff).getTime() - Date.now()
-      setTimeLeft(Math.max(0, Math.floor(diff / 1000)))
+      setTimeLeft(Math.max(0, Math.floor((endTime - Date.now()) / 1000)))
     }, 1000)
     return () => clearInterval(timer)
-  }, [kickoff, timeLeft])
+  }, [endTime, timeLeft])
 
   const days = Math.floor(timeLeft / 86400)
   const hours = Math.floor((timeLeft % 86400) / 3600)
@@ -260,7 +262,7 @@ export function MatchCard({ match }: { match: Match }) {
           {!isResolved && !countdown.expired && (
             <div>
               <div style={{ fontSize: "0.6rem", color: "#F0B90B", textTransform: "uppercase", letterSpacing: "0.1em", fontWeight: 700, marginBottom: "8px", textAlign: "center" }}>
-                ⏱ Funding closes at kickoff
+                ⏱ Funding closes at full time
               </div>
               <div style={{ display: "flex", justifyContent: "center", gap: "8px" }}>
                 {countdown.days > 0 && <CountdownUnit value={countdown.days} label="Days" />}
