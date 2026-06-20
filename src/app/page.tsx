@@ -38,15 +38,16 @@ export default async function Home() {
             letterSpacing: "-0.02em",
             lineHeight: 1.1,
             marginBottom: "12px",
+            color: "#0a0a0a",
           }}
         >
           THE WORLD CUP IS HAPPENING.
           <br />
-          <span style={{ color: "#F0B90B" }}>FUND A DREAM.</span>
+          FUND A DREAM.
         </h1>
         <p
           style={{
-            color: "#888",
+            color: "rgba(0,0,0,0.55)",
             fontSize: "1rem",
             maxWidth: "550px",
             margin: "0 auto",
@@ -59,7 +60,7 @@ export default async function Home() {
             href="https://thegivingblock.com/donate/world-vision/"
             target="_blank"
             rel="noopener noreferrer"
-            style={{ color: "#F0B90B", textDecoration: "none" }}
+            style={{ color: "#0a0a0a", fontWeight: 600, textDecoration: "underline" }}
           >
             {CHARITY_NAME}
           </a>
@@ -85,9 +86,8 @@ export default async function Home() {
           <div
             key={s.step}
             style={{
-              background: "#141414",
-              border: "1px solid #2a2a2a",
-              borderRadius: "10px",
+              background: "#0a0a0a",
+              borderRadius: "12px",
               padding: "16px 20px",
               flex: "1",
               minWidth: "200px",
@@ -140,8 +140,7 @@ export default async function Home() {
       {/* Charity banner */}
       <div
         style={{
-          background: "#141414",
-          border: "1px solid #2a2a2a",
+          background: "#0a0a0a",
           borderRadius: "12px",
           padding: "20px 24px",
           display: "flex",
@@ -170,13 +169,12 @@ export default async function Home() {
             fontSize: "0.7rem",
             padding: "6px 14px",
             borderRadius: "6px",
-            background: "#1a2a1a",
-            color: "#1DB954",
+            background: "#1DB954",
+            color: "#0a0a0a",
             fontWeight: 700,
             textTransform: "uppercase",
             letterSpacing: "0.08em",
             textDecoration: "none",
-            border: "1px solid #0d5c26",
           }}
         >
           ✓ VERIFIED

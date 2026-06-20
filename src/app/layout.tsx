@@ -27,12 +27,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${geistMono.variable} h-full antialiased`}>
-      <body className="min-h-full flex flex-col" style={{ background: "#0a0a0a", color: "#fff" }}>
+      <body className="min-h-full flex flex-col" style={{ background: "#F0B90B", color: "#0a0a0a" }}>
         <WalletProvider>
           {/* Header */}
           <header
             style={{
-              borderBottom: "1px solid #2a2a2a",
+              borderBottom: "2px solid rgba(0,0,0,0.1)",
               padding: "14px 24px",
               display: "flex",
               justifyContent: "space-between",
@@ -46,8 +46,8 @@ export default function RootLayout({
               href="/"
               style={{
                 fontSize: "1.2rem",
-                fontWeight: 800,
-                color: "#fff",
+                fontWeight: 900,
+                color: "#0a0a0a",
                 textTransform: "uppercase",
                 letterSpacing: "-0.01em",
                 textDecoration: "none",
@@ -62,14 +62,14 @@ export default function RootLayout({
                 rel="noopener noreferrer"
                 style={{
                   fontSize: "0.72rem",
-                  color: "#888",
+                  color: "rgba(0,0,0,0.5)",
                   textDecoration: "none",
                   display: "flex",
                   alignItems: "center",
                   gap: "4px",
                 }}
               >
-                <span style={{ color: "#1DB954" }}>♥</span> World Vision
+                <span style={{ color: "#0a0a0a" }}>♥</span> World Vision
               </a>
             </div>
           </header>
@@ -90,7 +90,7 @@ export default function RootLayout({
           {/* Footer */}
           <footer
             style={{
-              borderTop: "1px solid #1a1a1a",
+              borderTop: "2px solid rgba(0,0,0,0.1)",
               padding: "24px",
               textAlign: "center",
               maxWidth: "1200px",
@@ -98,13 +98,13 @@ export default function RootLayout({
               width: "100%",
             }}
           >
-            <div style={{ fontSize: "0.75rem", color: "#444" }}>
+            <div style={{ fontSize: "0.75rem", color: "rgba(0,0,0,0.4)" }}>
               FundGoal · 100% of stakes fund real projects · World Vision via{" "}
               <a
                 href="https://thegivingblock.com/donate/world-vision/"
                 target="_blank"
                 rel="noopener noreferrer"
-                style={{ color: "#F0B90B", textDecoration: "none" }}
+                style={{ color: "#0a0a0a", textDecoration: "underline" }}
               >
                 The Giving Block
               </a>{" "}

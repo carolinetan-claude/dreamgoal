@@ -14,18 +14,17 @@ export function MatchDetail({ match, charityUrl }: { match: Match; charityUrl: s
   const [txSig, setTxSig] = useState<string | null>(null)
 
   const isResolved = match.status === "resolved"
-  const accentColor = isResolved ? "#1DB954" : "#F0B90B"
   const winningTeam = match.winner === "A" ? match.teamA : match.winner === "B" ? match.teamB : null
 
   return (
     <div style={{ paddingTop: "32px", paddingBottom: "64px", maxWidth: "800px", margin: "0 auto" }}>
       {/* Back link */}
-      <a href="/" style={{ color: "#888", fontSize: "0.85rem", textDecoration: "none", marginBottom: "24px", display: "inline-block" }}>
+      <a href="/" style={{ color: "rgba(0,0,0,0.5)", fontSize: "0.85rem", textDecoration: "none", marginBottom: "24px", display: "inline-block" }}>
         ← Back to matches
       </a>
 
-      {/* Match header */}
-      <div style={{ textAlign: "center", marginBottom: "32px" }}>
+      {/* Match header — dark card */}
+      <div style={{ background: "#0a0a0a", borderRadius: "16px", padding: "32px", textAlign: "center", marginBottom: "24px", boxShadow: "0 4px 24px rgba(0,0,0,0.3)" }}>
         <div style={{ fontSize: "0.7rem", color: "#888", textTransform: "uppercase", letterSpacing: "0.1em", fontWeight: 600, marginBottom: "12px" }}>
           {match.group} · {match.kickoffDisplay}
         </div>
@@ -33,21 +32,37 @@ export function MatchDetail({ match, charityUrl }: { match: Match; charityUrl: s
         <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "24px", marginBottom: "8px" }}>
           <div style={{ textAlign: "center" }}>
             <div style={{ fontSize: "3rem", marginBottom: "4px" }}>{match.teamA.flag}</div>
-            <div style={{ fontSize: "1.3rem", fontWeight: 900, textTransform: "uppercase", letterSpacing: "-0.01em" }}>{match.teamA.name}</div>
+            <div style={{ fontSize: "1.3rem", fontWeight: 900, textTransform: "uppercase", letterSpacing: "-0.01em", color: "#fff" }}>{match.teamA.name}</div>
           </div>
           <div style={{ color: "#444", fontSize: "1rem", fontWeight: 700, textTransform: "uppercase" }}>VS</div>
           <div style={{ textAlign: "center" }}>
             <div style={{ fontSize: "3rem", marginBottom: "4px" }}>{match.teamB.flag}</div>
-            <div style={{ fontSize: "1.3rem", fontWeight: 900, textTransform: "uppercase", letterSpacing: "-0.01em" }}>{match.teamB.name}</div>
+            <div style={{ fontSize: "1.3rem", fontWeight: 900, textTransform: "uppercase", letterSpacing: "-0.01em", color: "#fff" }}>{match.teamB.name}</div>
           </div>
         </div>
 
         <div style={{ fontSize: "0.78rem", color: "#666" }}>{match.venue}</div>
+
+        {/* Pool stats inside header card */}
+        <div style={{ display: "flex", gap: "16px", marginTop: "20px" }}>
+          <div style={{ flex: 1, background: "#141414", borderRadius: "10px", padding: "14px", textAlign: "center" }}>
+            <div style={{ fontSize: "0.65rem", color: "#444", textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: "4px" }}>Total Pool</div>
+            <div style={{ fontFamily: "monospace", fontWeight: 700, color: isResolved ? "#1DB954" : "#F0B90B", fontSize: "1.3rem" }} className="countup">
+              {(match.totalSol || 0).toFixed(2)} SOL
+            </div>
+          </div>
+          <div style={{ flex: 1, background: "#141414", borderRadius: "10px", padding: "14px", textAlign: "center" }}>
+            <div style={{ fontSize: "0.65rem", color: "#444", textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: "4px" }}>♥ World Vision</div>
+            <div style={{ fontFamily: "monospace", fontWeight: 700, color: isResolved ? "#1DB954" : "#F0B90B", fontSize: "1.3rem" }}>
+              {(match.totalSol || 0).toFixed(2)} SOL
+            </div>
+          </div>
+        </div>
       </div>
 
       {/* Resolved state */}
       {isResolved && winningTeam && (
-        <div style={{ background: "#0d1f0d", border: "1px solid #1DB954", borderRadius: "12px", padding: "24px", textAlign: "center", marginBottom: "32px" }}>
+        <div style={{ background: "#0a0a0a", borderRadius: "14px", padding: "24px", textAlign: "center", marginBottom: "24px", boxShadow: "0 4px 24px rgba(0,0,0,0.3)", border: "2px solid #1DB954" }}>
           <div style={{ fontSize: "2rem", marginBottom: "8px" }}>{winningTeam.flag} 🎉</div>
           <div style={{ fontSize: "1.4rem", fontWeight: 900, textTransform: "uppercase", color: "#1DB954", marginBottom: "8px" }}>
             {winningTeam.name} WINS!
@@ -69,26 +84,10 @@ export function MatchDetail({ match, charityUrl }: { match: Match; charityUrl: s
         </div>
       )}
 
-      {/* Pool stats */}
-      <div style={{ display: "flex", gap: "16px", marginBottom: "32px" }}>
-        <div style={{ flex: 1, background: "#141414", border: "1px solid #2a2a2a", borderRadius: "10px", padding: "16px", textAlign: "center" }}>
-          <div style={{ fontSize: "0.65rem", color: "#444", textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: "4px" }}>Total Pool</div>
-          <div style={{ fontFamily: "monospace", fontWeight: 700, color: accentColor, fontSize: "1.3rem" }} className="countup">
-            {(match.totalSol || 0).toFixed(2)} SOL
-          </div>
-        </div>
-        <div style={{ flex: 1, background: "#141414", border: "1px solid #2a2a2a", borderRadius: "10px", padding: "16px", textAlign: "center" }}>
-          <div style={{ fontSize: "0.65rem", color: "#444", textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: "4px" }}>♥ World Vision</div>
-          <div style={{ fontFamily: "monospace", fontWeight: 700, color: accentColor, fontSize: "1.3rem" }}>
-            {(match.totalSol || 0).toFixed(2)} SOL
-          </div>
-        </div>
-      </div>
-
       {/* Project selection */}
       {!isResolved && !funded && (
         <>
-          <div style={{ fontSize: "0.7rem", color: "#888", textTransform: "uppercase", letterSpacing: "0.1em", fontWeight: 600, marginBottom: "16px", textAlign: "center" }}>
+          <div style={{ fontSize: "0.8rem", color: "rgba(0,0,0,0.5)", textTransform: "uppercase", letterSpacing: "0.1em", fontWeight: 600, marginBottom: "16px", textAlign: "center" }}>
             Which dream do you want to fund?
           </div>
 
@@ -97,16 +96,17 @@ export function MatchDetail({ match, charityUrl }: { match: Match; charityUrl: s
             <div
               onClick={() => setSelectedTeam("A")}
               style={{
-                background: selectedTeam === "A" ? "#1a1500" : "#141414",
-                border: `2px solid ${selectedTeam === "A" ? "#F0B90B" : "#2a2a2a"}`,
-                borderRadius: "12px",
+                background: "#0a0a0a",
+                border: selectedTeam === "A" ? "3px solid #1DB954" : "3px solid transparent",
+                borderRadius: "14px",
                 padding: "20px",
                 cursor: "pointer",
-                transition: "border-color 0.2s, background 0.2s",
+                transition: "border-color 0.2s, transform 0.2s",
+                boxShadow: "0 4px 24px rgba(0,0,0,0.3)",
               }}
             >
               <div style={{ fontSize: "2rem", marginBottom: "8px" }}>{match.teamA.flag}</div>
-              <div style={{ fontSize: "0.65rem", color: "#444", textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: "4px" }}>
+              <div style={{ fontSize: "0.65rem", color: "#888", textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: "4px" }}>
                 If {match.teamA.name} wins →
               </div>
               <div style={{ fontSize: "1rem", fontWeight: 700, color: "#fff", marginBottom: "8px" }}>
@@ -116,7 +116,7 @@ export function MatchDetail({ match, charityUrl }: { match: Match; charityUrl: s
                 {match.teamA.project.description}
               </div>
               {selectedTeam === "A" && (
-                <div style={{ marginTop: "12px", fontSize: "0.75rem", color: "#F0B90B", fontWeight: 700, textTransform: "uppercase" }}>
+                <div style={{ marginTop: "12px", fontSize: "0.75rem", color: "#1DB954", fontWeight: 700, textTransform: "uppercase" }}>
                   ✓ SELECTED
                 </div>
               )}
@@ -126,16 +126,17 @@ export function MatchDetail({ match, charityUrl }: { match: Match; charityUrl: s
             <div
               onClick={() => setSelectedTeam("B")}
               style={{
-                background: selectedTeam === "B" ? "#1a1500" : "#141414",
-                border: `2px solid ${selectedTeam === "B" ? "#F0B90B" : "#2a2a2a"}`,
-                borderRadius: "12px",
+                background: "#0a0a0a",
+                border: selectedTeam === "B" ? "3px solid #1DB954" : "3px solid transparent",
+                borderRadius: "14px",
                 padding: "20px",
                 cursor: "pointer",
-                transition: "border-color 0.2s, background 0.2s",
+                transition: "border-color 0.2s, transform 0.2s",
+                boxShadow: "0 4px 24px rgba(0,0,0,0.3)",
               }}
             >
               <div style={{ fontSize: "2rem", marginBottom: "8px" }}>{match.teamB.flag}</div>
-              <div style={{ fontSize: "0.65rem", color: "#444", textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: "4px" }}>
+              <div style={{ fontSize: "0.65rem", color: "#888", textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: "4px" }}>
                 If {match.teamB.name} wins →
               </div>
               <div style={{ fontSize: "1rem", fontWeight: 700, color: "#fff", marginBottom: "8px" }}>
@@ -145,7 +146,7 @@ export function MatchDetail({ match, charityUrl }: { match: Match; charityUrl: s
                 {match.teamB.project.description}
               </div>
               {selectedTeam === "B" && (
-                <div style={{ marginTop: "12px", fontSize: "0.75rem", color: "#F0B90B", fontWeight: 700, textTransform: "uppercase" }}>
+                <div style={{ marginTop: "12px", fontSize: "0.75rem", color: "#1DB954", fontWeight: 700, textTransform: "uppercase" }}>
                   ✓ SELECTED
                 </div>
               )}
@@ -154,9 +155,9 @@ export function MatchDetail({ match, charityUrl }: { match: Match; charityUrl: s
         </>
       )}
 
-      {/* Fund form */}
+      {/* Fund form — in a dark card */}
       {!isResolved && !funded && selectedTeam && (
-        <div style={{ maxWidth: "400px", margin: "0 auto" }}>
+        <div style={{ maxWidth: "420px", margin: "0 auto", background: "#0a0a0a", borderRadius: "14px", padding: "24px", boxShadow: "0 4px 24px rgba(0,0,0,0.3)" }}>
           {!publicKey ? (
             <div style={{ textAlign: "center" }}>
               <div style={{ fontSize: "0.85rem", color: "#888", marginBottom: "16px" }}>
@@ -195,7 +196,7 @@ export function MatchDetail({ match, charityUrl }: { match: Match; charityUrl: s
 
       {/* Success state */}
       {funded && txSig && (
-        <div style={{ background: "#0d1f0d", border: "1px solid #1DB954", borderRadius: "12px", padding: "24px", textAlign: "center" }}>
+        <div style={{ background: "#0a0a0a", border: "2px solid #1DB954", borderRadius: "14px", padding: "24px", textAlign: "center", boxShadow: "0 4px 24px rgba(0,0,0,0.3)" }}>
           <div style={{ fontSize: "2rem", marginBottom: "8px" }}>🎉</div>
           <div style={{ fontSize: "1.2rem", fontWeight: 900, textTransform: "uppercase", color: "#1DB954", marginBottom: "8px" }}>
             YOU&apos;RE BACKING {selectedTeam === "A" ? match.teamA.name.toUpperCase() : match.teamB.name.toUpperCase()}!
@@ -204,12 +205,7 @@ export function MatchDetail({ match, charityUrl }: { match: Match; charityUrl: s
             If they win, {selectedTeam === "A" ? match.teamA.project.name : match.teamB.project.name} gets funded.
           </div>
           <div style={{ marginBottom: "16px" }}>
-            <a
-              href={solscanTxUrl(txSig)}
-              target="_blank"
-              rel="noopener noreferrer"
-              style={{ color: "#F0B90B", fontSize: "0.82rem", textDecoration: "none" }}
-            >
+            <a href={solscanTxUrl(txSig)} target="_blank" rel="noopener noreferrer" style={{ color: "#F0B90B", fontSize: "0.82rem", textDecoration: "none" }}>
               View transaction on Solscan →
             </a>
           </div>
@@ -254,7 +250,7 @@ export function MatchDetail({ match, charityUrl }: { match: Match; charityUrl: s
       )}
 
       {/* Charity info */}
-      <div style={{ marginTop: "32px", padding: "16px 20px", background: "#141414", borderRadius: "10px", border: "1px solid #2a2a2a", display: "flex", alignItems: "center", gap: "12px" }}>
+      <div style={{ marginTop: "24px", padding: "16px 20px", background: "#0a0a0a", borderRadius: "12px", display: "flex", alignItems: "center", gap: "12px", boxShadow: "0 4px 24px rgba(0,0,0,0.3)" }}>
         <span style={{ fontSize: "1.5rem" }}>🌍</span>
         <div style={{ flex: 1 }}>
           <div style={{ fontSize: "0.85rem", color: "#fff", fontWeight: 600 }}>100% goes to World Vision</div>

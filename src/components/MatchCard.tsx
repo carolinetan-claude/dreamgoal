@@ -55,7 +55,6 @@ function StatusBadge({ status }: { status: MatchStatus }) {
         letterSpacing: "0.1em",
         padding: "3px 10px",
         borderRadius: "4px",
-        border: "1px solid #2a2a2a",
       }}
     >
       UPCOMING
@@ -64,30 +63,30 @@ function StatusBadge({ status }: { status: MatchStatus }) {
 }
 
 export function MatchCard({ match }: { match: Match }) {
-  const accentColor = match.status === "resolved" ? "#1DB954" : "#F0B90B"
   const totalSol = match.totalSol || 0
+  const isResolved = match.status === "resolved"
 
   return (
     <Link href={`/match/${match.id}`} style={{ textDecoration: "none" }}>
       <div
         style={{
-          background: "#141414",
-          border: "1px solid #2a2a2a",
-          borderRadius: "12px",
-          padding: "20px",
+          background: "#0a0a0a",
+          borderRadius: "14px",
+          padding: "22px",
           cursor: "pointer",
-          transition: "border-color 0.2s, transform 0.2s",
+          transition: "transform 0.2s, box-shadow 0.2s",
           display: "flex",
           flexDirection: "column",
           gap: "16px",
+          boxShadow: "0 4px 24px rgba(0,0,0,0.3)",
         }}
         onMouseEnter={(e) => {
-          (e.currentTarget as HTMLDivElement).style.borderColor = accentColor + "66"
-          ;(e.currentTarget as HTMLDivElement).style.transform = "translateY(-2px)"
+          (e.currentTarget as HTMLDivElement).style.transform = "translateY(-4px)"
+          ;(e.currentTarget as HTMLDivElement).style.boxShadow = "0 8px 32px rgba(0,0,0,0.5)"
         }}
         onMouseLeave={(e) => {
-          (e.currentTarget as HTMLDivElement).style.borderColor = "#2a2a2a"
-          ;(e.currentTarget as HTMLDivElement).style.transform = "translateY(0)"
+          (e.currentTarget as HTMLDivElement).style.transform = "translateY(0)"
+          ;(e.currentTarget as HTMLDivElement).style.boxShadow = "0 4px 24px rgba(0,0,0,0.3)"
         }}
       >
         {/* Header */}
@@ -122,7 +121,7 @@ export function MatchCard({ match }: { match: Match }) {
         </div>
 
         {/* Projects preview */}
-        <div style={{ background: "#1a1a1a", borderRadius: "8px", padding: "12px", fontSize: "0.78rem", color: "#888" }}>
+        <div style={{ background: "#141414", borderRadius: "8px", padding: "12px", fontSize: "0.78rem", color: "#888" }}>
           <div style={{ marginBottom: "6px" }}>
             <span style={{ color: "#F0B90B" }}>{match.teamA.flag}</span> {match.teamA.project.name}
           </div>
@@ -137,7 +136,7 @@ export function MatchCard({ match }: { match: Match }) {
             <div style={{ fontSize: "0.65rem", color: "#444", textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: "2px" }}>
               Pool
             </div>
-            <div style={{ fontFamily: "monospace", fontWeight: 700, color: accentColor, fontSize: "1.1rem" }}>
+            <div style={{ fontFamily: "monospace", fontWeight: 700, color: isResolved ? "#1DB954" : "#F0B90B", fontSize: "1.1rem" }}>
               {totalSol.toFixed(2)} SOL
             </div>
           </div>
@@ -145,21 +144,21 @@ export function MatchCard({ match }: { match: Match }) {
             <div style={{ fontSize: "0.65rem", color: "#444", textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: "2px" }}>
               ♥ World Vision
             </div>
-            <div style={{ fontFamily: "monospace", fontWeight: 700, color: accentColor === "#1DB954" ? "#1DB954" : "#F0B90B", fontSize: "0.95rem" }}>
+            <div style={{ fontFamily: "monospace", fontWeight: 700, color: isResolved ? "#1DB954" : "#F0B90B", fontSize: "0.95rem" }}>
               {totalSol.toFixed(2)} SOL
             </div>
           </div>
         </div>
 
         {/* Kickoff */}
-        <div style={{ fontSize: "0.78rem", color: "#666", borderTop: "1px solid #2a2a2a", paddingTop: "12px" }}>
+        <div style={{ fontSize: "0.78rem", color: "#666", borderTop: "1px solid #1a1a1a", paddingTop: "12px" }}>
           {match.kickoffDisplay} · {match.venue}
         </div>
 
         {/* CTA */}
         <div
           style={{
-            background: match.status === "resolved" ? "#1DB954" : "#F0B90B",
+            background: isResolved ? "#1DB954" : "#F0B90B",
             color: "#0a0a0a",
             fontWeight: 800,
             fontSize: "0.85rem",
@@ -170,7 +169,7 @@ export function MatchCard({ match }: { match: Match }) {
             textAlign: "center",
           }}
         >
-          {match.status === "resolved" ? "VIEW RESULTS" : "FUND THIS MATCH →"}
+          {isResolved ? "VIEW RESULTS" : "FUND THIS MATCH →"}
         </div>
       </div>
     </Link>
