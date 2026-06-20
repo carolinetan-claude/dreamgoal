@@ -80,6 +80,28 @@ body {
   );
 }
 
+/* Shimmer text for hero keywords */
+@keyframes shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+.shimmer-text {
+  background: linear-gradient(
+    90deg,
+    #F0B90B 0%,
+    #FFD54F 25%,
+    #FFFFFF 50%,
+    #FFD54F 75%,
+    #F0B90B 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmer 3s linear infinite;
+}
+
 /* PVP card glow on hover */
 @keyframes pvp-glow {
   0%, 100% { box-shadow: 0 0 20px rgba(240, 185, 11, 0.0); }
