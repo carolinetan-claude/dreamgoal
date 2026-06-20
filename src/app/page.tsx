@@ -80,8 +80,9 @@ export default async function Home() {
           { step: "02", title: "BACK A TEAM", desc: "Your SOL backs a project in that country", accent: "#FFD600", icon: "🎯" },
           { step: "03", title: "DREAM GETS FUNDED", desc: "100% goes to the winning project", accent: "#E91E63", icon: "🏆" },
         ].map((s) => (
-          <div
+          <a
             key={s.step}
+            href="#matches"
             style={{
               background: "#FDF6E3",
               borderRadius: "12px",
@@ -90,6 +91,9 @@ export default async function Home() {
               minWidth: "200px",
               maxWidth: "280px",
               borderTop: `4px solid ${s.accent}`,
+              textDecoration: "none",
+              cursor: "pointer",
+              transition: "transform 0.2s ease",
             }}
           >
             <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "12px" }}>
@@ -118,11 +122,24 @@ export default async function Home() {
               {s.title}
             </div>
             <div style={{ fontSize: "0.8rem", color: "#5a5a5a" }}>{s.desc}</div>
-          </div>
+          </a>
         ))}
       </div>
 
       {/* Match Grid */}
+      <div id="matches" style={{ textAlign: "center", marginBottom: "24px", scrollMarginTop: "80px" }}>
+        <h2
+          style={{
+            fontSize: "1.5rem",
+            fontWeight: 900,
+            textTransform: "uppercase",
+            letterSpacing: "-0.01em",
+            color: "#FFFFFF",
+          }}
+        >
+          PICK A MATCH <span style={{ color: "#F0B90B" }}>&</span> BACK A TEAM
+        </h2>
+      </div>
       <div
         style={{
           display: "grid",
