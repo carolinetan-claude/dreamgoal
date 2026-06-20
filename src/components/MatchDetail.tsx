@@ -20,7 +20,7 @@ export function MatchDetail({ match, charityUrl }: { match: Match; charityUrl: s
   const totalSol = match.totalSol || 0
 
   return (
-    <div style={{ paddingTop: "32px", paddingBottom: "64px", maxWidth: selectedTeam ? "1100px" : "800px", margin: "0 auto", transition: "max-width 0.3s ease" }}>
+    <div style={{ paddingTop: "32px", paddingBottom: "64px", maxWidth: "1200px", margin: "0 auto" }}>
       {/* Back link */}
       <a href="/" style={{ color: "rgba(255,255,255,0.5)", fontSize: "0.85rem", textDecoration: "none", marginBottom: "20px", display: "inline-block" }}>
         ← Back to matches
@@ -105,150 +105,154 @@ export function MatchDetail({ match, charityUrl }: { match: Match; charityUrl: s
             )}
           </div>
 
-          {/* Side-by-side dream cards */}
-          <div style={{ display: "grid", gridTemplateColumns: selectedTeam ? "1fr" : "1fr 1fr", gap: "20px", marginBottom: "24px" }}>
-            {[
-              { key: "A" as const, team: match.teamA },
-              { key: "B" as const, team: match.teamB },
-            ]
-              .filter(({ key }) => !selectedTeam || selectedTeam === key)
-              .map(({ key, team }) => {
-                const p = team.project
-                return (
-                  <div
-                    key={key}
-                    onClick={() => !selectedTeam && setSelectedTeam(key)}
-                    style={{
-                      background: "#FDF6E3",
-                      border: selectedTeam ? "3px solid #F0B90B" : "3px solid transparent",
-                      borderRadius: "16px",
-                      cursor: selectedTeam ? "default" : "pointer",
-                      transition: "all 0.3s ease",
-                      boxShadow: selectedTeam ? "0 0 30px rgba(240,185,11,0.2)" : "0 4px 24px rgba(0,0,0,0.2)",
-                      padding: "20px",
-                      display: "flex",
-                      flexDirection: "column" as const,
-                      gap: "12px",
-                    }}
-                  >
-                    {/* Header */}
-                    <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-                      <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
-                        <span style={{ fontSize: "2rem" }}>{team.flag}</span>
-                        <div>
-                          <div style={{ fontSize: "0.55rem", color: "#888", textTransform: "uppercase", letterSpacing: "0.1em", fontWeight: 600 }}>
-                            If {team.name} wins
-                          </div>
-                          <div style={{ fontSize: "1.05rem", fontWeight: 800, color: "#1a1a1a", lineHeight: 1.3 }}>
-                            {p.name}
+          {/* Dream cards — side by side when choosing, left+checkout when selected */}
+          <div style={{ display: "flex", gap: "20px", alignItems: "flex-start" }}>
+            {/* Dream cards */}
+            <div style={{ flex: 1, display: "grid", gridTemplateColumns: selectedTeam ? "1fr" : "1fr 1fr", gap: "20px" }}>
+              {[
+                { key: "A" as const, team: match.teamA },
+                { key: "B" as const, team: match.teamB },
+              ]
+                .filter(({ key }) => !selectedTeam || selectedTeam === key)
+                .map(({ key, team }) => {
+                  const p = team.project
+                  return (
+                    <div
+                      key={key}
+                      onClick={() => !selectedTeam && setSelectedTeam(key)}
+                      style={{
+                        background: "#FDF6E3",
+                        border: selectedTeam ? "3px solid #F0B90B" : "3px solid transparent",
+                        borderRadius: "16px",
+                        cursor: selectedTeam ? "default" : "pointer",
+                        boxShadow: selectedTeam ? "0 0 30px rgba(240,185,11,0.2)" : "0 4px 24px rgba(0,0,0,0.2)",
+                        padding: "20px",
+                        display: "flex",
+                        flexDirection: "column" as const,
+                        gap: "12px",
+                      }}
+                    >
+                      {/* Header */}
+                      <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+                        <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
+                          <span style={{ fontSize: "2rem" }}>{team.flag}</span>
+                          <div>
+                            <div style={{ fontSize: "0.55rem", color: "#888", textTransform: "uppercase", letterSpacing: "0.1em", fontWeight: 600 }}>
+                              If {team.name} wins
+                            </div>
+                            <div style={{ fontSize: "1.05rem", fontWeight: 800, color: "#1a1a1a", lineHeight: 1.3 }}>
+                              {p.name}
+                            </div>
                           </div>
                         </div>
+                        {selectedTeam && (
+                          <button
+                            onClick={(e) => { e.stopPropagation(); setSelectedTeam(null) }}
+                            style={{
+                              background: "rgba(0,0,0,0.08)",
+                              border: "none",
+                              borderRadius: "6px",
+                              padding: "6px 12px",
+                              fontSize: "0.68rem",
+                              color: "#666",
+                              cursor: "pointer",
+                              fontWeight: 600,
+                            }}
+                          >
+                            Change
+                          </button>
+                        )}
                       </div>
-                      {selectedTeam && (
-                        <button
-                          onClick={(e) => { e.stopPropagation(); setSelectedTeam(null) }}
+
+                      {/* Subsections */}
+                      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: "8px" }}>
+                        <div style={{ background: "rgba(0,0,0,0.04)", borderRadius: "8px", padding: "10px" }}>
+                          <div style={{ fontSize: "0.5rem", color: "#996B00", textTransform: "uppercase", letterSpacing: "0.1em", fontWeight: 700, marginBottom: "4px" }}>
+                            👥 Who is this for?
+                          </div>
+                          <div style={{ fontSize: "0.72rem", color: "#4a4a4a", lineHeight: 1.4 }}>{p.whoIsThisFor}</div>
+                        </div>
+                        <div style={{ background: "rgba(0,0,0,0.04)", borderRadius: "8px", padding: "10px" }}>
+                          <div style={{ fontSize: "0.5rem", color: "#996B00", textTransform: "uppercase", letterSpacing: "0.1em", fontWeight: 700, marginBottom: "4px" }}>
+                            💰 What funds are used for
+                          </div>
+                          <div style={{ fontSize: "0.72rem", color: "#4a4a4a", lineHeight: 1.4 }}>{p.whatFundsUsedFor}</div>
+                        </div>
+                        <div style={{ background: "rgba(0,0,0,0.04)", borderRadius: "8px", padding: "10px" }}>
+                          <div style={{ fontSize: "0.5rem", color: "#996B00", textTransform: "uppercase", letterSpacing: "0.1em", fontWeight: 700, marginBottom: "4px" }}>
+                            ✨ Why is this unique?
+                          </div>
+                          <div style={{ fontSize: "0.72rem", color: "#4a4a4a", lineHeight: 1.4 }}>{p.whyUnique}</div>
+                        </div>
+                      </div>
+
+                      {/* CTA — only when not selected */}
+                      {!selectedTeam && (
+                        <div
                           style={{
-                            background: "rgba(0,0,0,0.08)",
-                            border: "none",
-                            borderRadius: "6px",
-                            padding: "6px 12px",
-                            fontSize: "0.68rem",
-                            color: "#666",
-                            cursor: "pointer",
-                            fontWeight: 600,
+                            background: "#F0B90B",
+                            color: "#0a0a0a",
+                            fontWeight: 800,
+                            fontSize: "0.82rem",
+                            textTransform: "uppercase",
+                            letterSpacing: "0.05em",
+                            padding: "14px",
+                            borderRadius: "10px",
+                            textAlign: "center",
                           }}
                         >
-                          Change
-                        </button>
+                          BACK THIS TEAM →
+                        </div>
                       )}
                     </div>
+                  )
+                })}
+            </div>
 
-                    {/* Subsections */}
-                    <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: "8px" }}>
-                      <div style={{ background: "rgba(0,0,0,0.04)", borderRadius: "8px", padding: "10px" }}>
-                        <div style={{ fontSize: "0.5rem", color: "#996B00", textTransform: "uppercase", letterSpacing: "0.1em", fontWeight: 700, marginBottom: "4px" }}>
-                          👥 Who is this for?
-                        </div>
-                        <div style={{ fontSize: "0.72rem", color: "#4a4a4a", lineHeight: 1.4 }}>{p.whoIsThisFor}</div>
+            {/* Checkout — right side, sticky */}
+            {selectedTeam && (
+              <div style={{ width: "380px", flexShrink: 0, position: "sticky" as const, top: "80px" }}>
+                <div style={{ background: "#0a0a0a", borderRadius: "14px", padding: "24px", boxShadow: "0 4px 24px rgba(0,0,0,0.3)", border: "2px solid #F0B90B" }}>
+                  <div style={{ fontSize: "0.6rem", color: "#F0B90B", textTransform: "uppercase", letterSpacing: "0.12em", fontWeight: 700, marginBottom: "16px", textAlign: "center" }}>
+                    Fund this dream
+                  </div>
+                  {!publicKey ? (
+                    <div style={{ textAlign: "center" }}>
+                      <div style={{ fontSize: "0.85rem", color: "#888", marginBottom: "16px" }}>
+                        Connect your Phantom wallet to pledge SOL
                       </div>
-                      <div style={{ background: "rgba(0,0,0,0.04)", borderRadius: "8px", padding: "10px" }}>
-                        <div style={{ fontSize: "0.5rem", color: "#996B00", textTransform: "uppercase", letterSpacing: "0.1em", fontWeight: 700, marginBottom: "4px" }}>
-                          💰 What funds are used for
-                        </div>
-                        <div style={{ fontSize: "0.72rem", color: "#4a4a4a", lineHeight: 1.4 }}>{p.whatFundsUsedFor}</div>
-                      </div>
-                      <div style={{ background: "rgba(0,0,0,0.04)", borderRadius: "8px", padding: "10px" }}>
-                        <div style={{ fontSize: "0.5rem", color: "#996B00", textTransform: "uppercase", letterSpacing: "0.1em", fontWeight: 700, marginBottom: "4px" }}>
-                          ✨ Why is this unique?
-                        </div>
-                        <div style={{ fontSize: "0.72rem", color: "#4a4a4a", lineHeight: 1.4 }}>{p.whyUnique}</div>
-                      </div>
-                    </div>
-
-                    {/* CTA — only show when not yet selected */}
-                    {!selectedTeam && (
-                      <div
+                      <WalletMultiButton
                         style={{
                           background: "#F0B90B",
                           color: "#0a0a0a",
                           fontWeight: 800,
-                          fontSize: "0.82rem",
+                          fontSize: "0.85rem",
                           textTransform: "uppercase",
-                          letterSpacing: "0.05em",
-                          padding: "14px",
-                          borderRadius: "10px",
-                          textAlign: "center",
+                          borderRadius: "8px",
+                          padding: "14px 32px",
+                          border: "none",
+                          cursor: "pointer",
+                          width: "100%",
+                          justifyContent: "center",
                         }}
-                      >
-                        BACK THIS TEAM →
-                      </div>
-                    )}
-                  </div>
-                )
-              })}
-          </div>
-
-          {/* Checkout — appears below selected card */}
-          {selectedTeam && (
-            <div style={{ maxWidth: "600px", margin: "0 auto", background: "#0a0a0a", borderRadius: "14px", padding: "24px", boxShadow: "0 4px 24px rgba(0,0,0,0.3)", border: "2px solid #F0B90B" }}>
-              <div style={{ fontSize: "0.6rem", color: "#F0B90B", textTransform: "uppercase", letterSpacing: "0.12em", fontWeight: 700, marginBottom: "16px", textAlign: "center" }}>
-                Fund this dream
-              </div>
-              {!publicKey ? (
-                <div style={{ textAlign: "center" }}>
-                  <div style={{ fontSize: "0.85rem", color: "#888", marginBottom: "16px" }}>
-                    Connect your Phantom wallet to pledge SOL
-                  </div>
-                  <WalletMultiButton
-                    style={{
-                      background: "#F0B90B",
-                      color: "#0a0a0a",
-                      fontWeight: 800,
-                      fontSize: "0.85rem",
-                      textTransform: "uppercase",
-                      borderRadius: "8px",
-                      padding: "14px 32px",
-                      border: "none",
-                      cursor: "pointer",
-                      width: "100%",
-                      justifyContent: "center",
-                    }}
-                  />
+                      />
+                    </div>
+                  ) : (
+                    <FundForm
+                      matchId={match.id}
+                      teamChoice={selectedTeam === "A" ? 0 : 1}
+                      teamName={selectedTeam === "A" ? match.teamA.name : match.teamB.name}
+                      projectName={selectedTeam === "A" ? match.teamA.project.name : match.teamB.project.name}
+                      onSuccess={(sig) => {
+                        setTxSig(sig)
+                        setFunded(true)
+                      }}
+                    />
+                  )}
                 </div>
-              ) : (
-                <FundForm
-                  matchId={match.id}
-                  teamChoice={selectedTeam === "A" ? 0 : 1}
-                  teamName={selectedTeam === "A" ? match.teamA.name : match.teamB.name}
-                  projectName={selectedTeam === "A" ? match.teamA.project.name : match.teamB.project.name}
-                  onSuccess={(sig) => {
-                    setTxSig(sig)
-                    setFunded(true)
-                  }}
-                />
-              )}
-            </div>
-          )}
+              </div>
+            )}
+          </div>
         </>
       )}
 
