@@ -90,12 +90,13 @@ export default async function Home() {
           <div
             key={s.step}
             style={{
-              background: "#F0B90B",
+              background: "linear-gradient(135deg, #F0B90B 0%, #D4A00A 100%)",
               borderRadius: "12px",
               padding: "16px 20px",
               flex: "1",
               minWidth: "200px",
               maxWidth: "280px",
+              boxShadow: "0 4px 20px rgba(240,185,11,0.3), 0 0 0 1px rgba(0,0,0,0.1)",
             }}
           >
             <div
@@ -144,13 +145,14 @@ export default async function Home() {
       {/* Charity banner */}
       <div
         style={{
-          background: "#F0B90B",
+          background: "linear-gradient(135deg, #F0B90B 0%, #D4A00A 100%)",
           borderRadius: "12px",
           padding: "20px 24px",
           display: "flex",
           alignItems: "center",
           gap: "16px",
           flexWrap: "wrap",
+          boxShadow: "0 4px 20px rgba(240,185,11,0.3), 0 0 0 1px rgba(0,0,0,0.1)",
         }}
       >
         <div style={{ fontSize: "2rem" }}>🌍</div>
