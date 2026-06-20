@@ -116,12 +116,12 @@ export function MatchDetail({ match, charityUrl }: { match: Match; charityUrl: s
                     key={key}
                     onClick={() => setSelectedTeam(key)}
                     style={{
-                      background: "#0a0a0a",
-                      border: isSelected ? "2px solid #F0B90B" : "2px solid rgba(255,255,255,0.08)",
+                      background: "#FDF6E3",
+                      border: isSelected ? "3px solid #F0B90B" : "3px solid transparent",
                       borderRadius: "16px",
                       cursor: "pointer",
                       transition: "all 0.2s ease",
-                      boxShadow: isSelected ? "0 0 30px rgba(240,185,11,0.15)" : "0 4px 24px rgba(0,0,0,0.3)",
+                      boxShadow: isSelected ? "0 0 30px rgba(240,185,11,0.2)" : "0 4px 24px rgba(0,0,0,0.2)",
                       padding: "20px",
                       display: "flex",
                       flexDirection: "column" as const,
@@ -135,39 +135,39 @@ export function MatchDetail({ match, charityUrl }: { match: Match; charityUrl: s
                         <div style={{ fontSize: "0.55rem", color: "#888", textTransform: "uppercase", letterSpacing: "0.1em", fontWeight: 600 }}>
                           If {team.name} wins
                         </div>
-                        <div style={{ fontSize: "1rem", fontWeight: 800, color: "#FFFFFF", lineHeight: 1.3 }}>
+                        <div style={{ fontSize: "1rem", fontWeight: 800, color: "#1a1a1a", lineHeight: 1.3 }}>
                           {p.name}
                         </div>
                       </div>
                     </div>
 
                     {/* Subsections */}
-                    <div style={{ display: "grid", gridTemplateColumns: isSelected ? "1fr" : "1fr 1fr 1fr", gap: "8px" }}>
-                      <div style={{ background: "#141414", borderRadius: "8px", padding: "10px" }}>
-                        <div style={{ fontSize: "0.5rem", color: "#F0B90B", textTransform: "uppercase", letterSpacing: "0.1em", fontWeight: 700, marginBottom: "4px" }}>
+                    <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: "8px" }}>
+                      <div style={{ background: "rgba(0,0,0,0.04)", borderRadius: "8px", padding: "10px" }}>
+                        <div style={{ fontSize: "0.5rem", color: "#996B00", textTransform: "uppercase", letterSpacing: "0.1em", fontWeight: 700, marginBottom: "4px" }}>
                           👥 Who is this for?
                         </div>
-                        <div style={{ fontSize: "0.72rem", color: "#ccc", lineHeight: 1.4 }}>{p.whoIsThisFor}</div>
+                        <div style={{ fontSize: "0.72rem", color: "#4a4a4a", lineHeight: 1.4 }}>{p.whoIsThisFor}</div>
                       </div>
-                      <div style={{ background: "#141414", borderRadius: "8px", padding: "10px" }}>
-                        <div style={{ fontSize: "0.5rem", color: "#F0B90B", textTransform: "uppercase", letterSpacing: "0.1em", fontWeight: 700, marginBottom: "4px" }}>
+                      <div style={{ background: "rgba(0,0,0,0.04)", borderRadius: "8px", padding: "10px" }}>
+                        <div style={{ fontSize: "0.5rem", color: "#996B00", textTransform: "uppercase", letterSpacing: "0.1em", fontWeight: 700, marginBottom: "4px" }}>
                           💰 What funds are used for
                         </div>
-                        <div style={{ fontSize: "0.72rem", color: "#ccc", lineHeight: 1.4 }}>{p.whatFundsUsedFor}</div>
+                        <div style={{ fontSize: "0.72rem", color: "#4a4a4a", lineHeight: 1.4 }}>{p.whatFundsUsedFor}</div>
                       </div>
-                      <div style={{ background: "#141414", borderRadius: "8px", padding: "10px" }}>
-                        <div style={{ fontSize: "0.5rem", color: "#F0B90B", textTransform: "uppercase", letterSpacing: "0.1em", fontWeight: 700, marginBottom: "4px" }}>
+                      <div style={{ background: "rgba(0,0,0,0.04)", borderRadius: "8px", padding: "10px" }}>
+                        <div style={{ fontSize: "0.5rem", color: "#996B00", textTransform: "uppercase", letterSpacing: "0.1em", fontWeight: 700, marginBottom: "4px" }}>
                           ✨ Why is this unique?
                         </div>
-                        <div style={{ fontSize: "0.72rem", color: "#ccc", lineHeight: 1.4 }}>{p.whyUnique}</div>
+                        <div style={{ fontSize: "0.72rem", color: "#4a4a4a", lineHeight: 1.4 }}>{p.whyUnique}</div>
                       </div>
                     </div>
 
                     {/* CTA */}
                     <div
                       style={{
-                        background: "#F0B90B",
-                        color: "#0a0a0a",
+                        background: isSelected ? "#0a0a0a" : "#F0B90B",
+                        color: isSelected ? "#F0B90B" : "#0a0a0a",
                         fontWeight: 800,
                         fontSize: "0.82rem",
                         textTransform: "uppercase",
@@ -175,7 +175,6 @@ export function MatchDetail({ match, charityUrl }: { match: Match; charityUrl: s
                         padding: "14px",
                         borderRadius: "10px",
                         textAlign: "center",
-                        opacity: isSelected ? 1 : 0.85,
                       }}
                     >
                       {isSelected ? "✓ YOU'RE BACKING THIS TEAM" : "BACK THIS TEAM →"}
