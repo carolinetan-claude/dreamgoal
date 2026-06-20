@@ -1,6 +1,7 @@
-import { MATCHES, CHARITY_NAME } from "@/lib/matches"
+import { MATCHES } from "@/lib/matches"
 import { MatchCard } from "@/components/MatchCard"
 import { FlagCloud } from "@/components/FlagCloud"
+import { CharityMarquee } from "@/components/CharityMarquee"
 
 export const dynamic = "force-dynamic"
 
@@ -43,7 +44,7 @@ export default async function Home() {
             color: "#FFFFFF",
           }}
         >
-          EVERY <span className="shimmer-text">GOAL</span> STARTS WITH A DREAM
+          EVERY <span className="shimmer-text">GOAL</span> STARTS WITH A DREAM,
           <br />
           THAT YOU HAVE THE POWER TO <span className="shimmer-text">FUND</span>.
         </h1>
@@ -57,16 +58,7 @@ export default async function Home() {
           }}
         >
           Pick a match. Back a team. 100% of your SOL funds a real project in that
-          country — verified on Solana, powered by{" "}
-          <a
-            href="https://thegivingblock.com/donate/world-vision/"
-            target="_blank"
-            rel="noopener noreferrer"
-            style={{ color: "#F0B90B", fontWeight: 600, textDecoration: "underline" }}
-          >
-            {CHARITY_NAME}
-          </a>
-          .
+          country — verified on Solana.
         </p>
       </div>
 
@@ -144,50 +136,13 @@ export default async function Home() {
         ))}
       </div>
 
-      {/* Charity banner */}
-      <div
-        style={{
-          background: "linear-gradient(135deg, #F0B90B 0%, #D4A00A 100%)",
-          borderRadius: "12px",
-          padding: "20px 24px",
-          display: "flex",
-          alignItems: "center",
-          gap: "16px",
-          flexWrap: "wrap",
-          boxShadow: "0 4px 20px rgba(240,185,11,0.3), 0 0 0 1px rgba(0,0,0,0.1)",
-        }}
-      >
-        <div style={{ fontSize: "2rem" }}>🌍</div>
-        <div style={{ flex: 1, minWidth: "200px" }}>
-          <div style={{ fontWeight: 700, fontSize: "0.95rem", color: "#0a0a0a", marginBottom: "2px" }}>
-            {CHARITY_NAME} United States
-          </div>
-          <div style={{ fontSize: "0.78rem", color: "rgba(0,0,0,0.6)" }}>
-            70+ years empowering children &amp; communities out of poverty · EIN: 95-1922279 · 501(c)(3)
-          </div>
-          <div style={{ fontSize: "0.72rem", color: "rgba(0,0,0,0.45)", marginTop: "2px" }}>
-            Accepts SOL &amp; all major crypto via The Giving Block
-          </div>
+      {/* Charities marquee */}
+      <div style={{ textAlign: "center", marginBottom: "8px" }}>
+        <div style={{ fontSize: "0.7rem", color: "#F0B90B", textTransform: "uppercase", letterSpacing: "0.12em", fontWeight: 700 }}>
+          Charities you can fund
         </div>
-        <a
-          href="https://thegivingblock.com/donate/world-vision/"
-          target="_blank"
-          rel="noopener noreferrer"
-          style={{
-            fontSize: "0.7rem",
-            padding: "6px 14px",
-            borderRadius: "6px",
-            background: "#0a0a0a",
-            color: "#F0B90B",
-            fontWeight: 700,
-            textTransform: "uppercase",
-            letterSpacing: "0.08em",
-            textDecoration: "none",
-          }}
-        >
-          ✓ VERIFIED
-        </a>
       </div>
+      <CharityMarquee />
     </div>
   )
 }

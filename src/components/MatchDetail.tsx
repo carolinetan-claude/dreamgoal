@@ -119,22 +119,46 @@ export function MatchDetail({ match, charityUrl }: { match: Match; charityUrl: s
 
         {/* Match info bar below the arena */}
         <div style={{ background: "#0a0a0a", padding: "16px 24px" }}>
-          <div style={{ fontSize: "0.72rem", color: "#888", textTransform: "uppercase", letterSpacing: "0.1em", fontWeight: 600, textAlign: "center", marginBottom: "16px" }}>
-            {match.group} · {match.kickoffDisplay} · {match.venue}
-          </div>
-
-          {/* Pool stats */}
-          <div style={{ display: "flex", gap: "16px" }}>
-            <div style={{ flex: 1, background: "#141414", borderRadius: "10px", padding: "14px", textAlign: "center" }}>
-              <div style={{ fontSize: "0.6rem", color: "#444", textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: "4px" }}>Total Pool</div>
-              <div style={{ fontFamily: "monospace", fontWeight: 700, color: isResolved ? "#1DB954" : "#F0B90B", fontSize: "1.3rem" }} className="countup">
-                {(match.totalSol || 0).toFixed(2)} SOL
+          {/* Venue + time */}
+          <div
+            style={{
+              background: "#141414",
+              borderRadius: "8px",
+              padding: "10px 14px",
+              display: "flex",
+              alignItems: "center",
+              gap: "10px",
+              marginBottom: "16px",
+            }}
+          >
+            <div style={{ fontSize: "1.2rem" }}>📍</div>
+            <div>
+              <div style={{ fontSize: "0.85rem", fontWeight: 700, color: "#FFFFFF" }}>
+                {match.venue}
+              </div>
+              <div style={{ fontSize: "0.72rem", color: "#F0B90B", fontWeight: 600 }}>
+                {match.group} · {match.kickoffDisplay}
               </div>
             </div>
-            <div style={{ flex: 1, background: "#141414", borderRadius: "10px", padding: "14px", textAlign: "center" }}>
-              <div style={{ fontSize: "0.6rem", color: "#444", textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: "4px" }}>♥ World Vision</div>
-              <div style={{ fontFamily: "monospace", fontWeight: 700, color: isResolved ? "#1DB954" : "#F0B90B", fontSize: "1.3rem" }}>
-                {(match.totalSol || 0).toFixed(2)} SOL
+          </div>
+
+          {/* Pool + Backers */}
+          <div style={{ display: "flex", justifyContent: "center", gap: "32px", alignItems: "center", padding: "8px 0" }}>
+            <div style={{ textAlign: "center" }}>
+              <div style={{ fontSize: "0.6rem", color: "#F0B90B", textTransform: "uppercase", letterSpacing: "0.1em", marginBottom: "4px", fontWeight: 700 }}>
+                Total Pool
+              </div>
+              <div style={{ fontFamily: "monospace", fontWeight: 900, color: "#FFFFFF", fontSize: "1.5rem" }} className="countup">
+                {(match.totalSol || 0).toFixed(2)} <span style={{ color: "#F0B90B" }}>SOL</span>
+              </div>
+            </div>
+            <div style={{ width: "1px", height: "40px", background: "#2a2a2a" }} />
+            <div style={{ textAlign: "center" }}>
+              <div style={{ fontSize: "0.6rem", color: "#F0B90B", textTransform: "uppercase", letterSpacing: "0.1em", marginBottom: "4px", fontWeight: 700 }}>
+                Backers
+              </div>
+              <div style={{ fontFamily: "monospace", fontWeight: 900, color: "#FFFFFF", fontSize: "1.5rem" }}>
+                {match.backers || 0}
               </div>
             </div>
           </div>
