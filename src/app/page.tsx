@@ -39,16 +39,16 @@ export default async function Home() {
             letterSpacing: "-0.02em",
             lineHeight: 1.1,
             marginBottom: "12px",
-            color: "#0a0a0a",
+            color: "#FFFFFF",
           }}
         >
           THE WORLD CUP IS HAPPENING.
           <br />
-          FUND A DREAM.
+          <span style={{ color: "#F0B90B" }}>FUND A DREAM.</span>
         </h1>
         <p
           style={{
-            color: "rgba(0,0,0,0.55)",
+            color: "rgba(255,255,255,0.6)",
             fontSize: "1rem",
             maxWidth: "550px",
             margin: "0 auto",
@@ -61,7 +61,7 @@ export default async function Home() {
             href="https://thegivingblock.com/donate/world-vision/"
             target="_blank"
             rel="noopener noreferrer"
-            style={{ color: "#0a0a0a", fontWeight: 600, textDecoration: "underline" }}
+            style={{ color: "#F0B90B", fontWeight: 600, textDecoration: "underline" }}
           >
             {CHARITY_NAME}
           </a>
@@ -90,7 +90,9 @@ export default async function Home() {
           <div
             key={s.step}
             style={{
-              background: "#0a0a0a",
+              background: "rgba(10,10,10,0.85)",
+              backdropFilter: "blur(8px)",
+              border: "1px solid rgba(255,255,255,0.06)",
               borderRadius: "12px",
               padding: "16px 20px",
               flex: "1",
@@ -144,7 +146,9 @@ export default async function Home() {
       {/* Charity banner */}
       <div
         style={{
-          background: "#0a0a0a",
+          background: "rgba(10,10,10,0.85)",
+          backdropFilter: "blur(8px)",
+          border: "1px solid rgba(255,255,255,0.06)",
           borderRadius: "12px",
           padding: "20px 24px",
           display: "flex",
