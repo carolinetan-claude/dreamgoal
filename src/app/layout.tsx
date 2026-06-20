@@ -27,12 +27,18 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${geistMono.variable} h-full antialiased`}>
-      <body className="min-h-full flex flex-col" style={{ background: "#F0B90B", color: "#0a0a0a" }}>
+      <body className="min-h-full flex flex-col" style={{ background: "#0a0a0a", color: "#FFFFFF" }}>
         <WalletProvider>
-          {/* Header */}
+          {/* Fixed hero background image */}
+          <div className="hero-bg" aria-hidden="true" />
+
+          {/* Header — glass over the hero image */}
           <header
             style={{
-              borderBottom: "2px solid rgba(0,0,0,0.1)",
+              position: "sticky",
+              top: 0,
+              zIndex: 50,
+              borderBottom: "1px solid rgba(255,255,255,0.08)",
               padding: "14px 24px",
               display: "flex",
               justifyContent: "space-between",
@@ -40,6 +46,9 @@ export default function RootLayout({
               maxWidth: "1200px",
               margin: "0 auto",
               width: "100%",
+              background: "rgba(0,0,0,0.6)",
+              backdropFilter: "blur(12px)",
+              WebkitBackdropFilter: "blur(12px)",
             }}
           >
             <a
@@ -47,7 +56,7 @@ export default function RootLayout({
               style={{
                 fontSize: "1.2rem",
                 fontWeight: 900,
-                color: "#0a0a0a",
+                color: "#FFFFFF",
                 textTransform: "uppercase",
                 letterSpacing: "-0.01em",
                 textDecoration: "none",
@@ -62,19 +71,19 @@ export default function RootLayout({
                 rel="noopener noreferrer"
                 style={{
                   fontSize: "0.72rem",
-                  color: "rgba(0,0,0,0.5)",
+                  color: "rgba(255,255,255,0.5)",
                   textDecoration: "none",
                   display: "flex",
                   alignItems: "center",
                   gap: "4px",
                 }}
               >
-                <span style={{ color: "#0a0a0a" }}>♥</span> World Vision
+                <span style={{ color: "#F0B90B" }}>♥</span> World Vision
               </a>
             </div>
           </header>
 
-          {/* Main */}
+          {/* Main — sits above the fixed background */}
           <main
             style={{
               flex: 1,
@@ -82,6 +91,8 @@ export default function RootLayout({
               margin: "0 auto",
               width: "100%",
               padding: "0 24px",
+              position: "relative",
+              zIndex: 1,
             }}
           >
             {children}
@@ -90,21 +101,26 @@ export default function RootLayout({
           {/* Footer */}
           <footer
             style={{
-              borderTop: "2px solid rgba(0,0,0,0.1)",
+              borderTop: "1px solid rgba(255,255,255,0.08)",
               padding: "24px",
               textAlign: "center",
               maxWidth: "1200px",
               margin: "0 auto",
               width: "100%",
+              position: "relative",
+              zIndex: 1,
+              background: "rgba(0,0,0,0.5)",
+              backdropFilter: "blur(8px)",
+              WebkitBackdropFilter: "blur(8px)",
             }}
           >
-            <div style={{ fontSize: "0.75rem", color: "rgba(0,0,0,0.4)" }}>
+            <div style={{ fontSize: "0.75rem", color: "rgba(255,255,255,0.4)" }}>
               FundGoal · 100% of stakes fund real projects · World Vision via{" "}
               <a
                 href="https://thegivingblock.com/donate/world-vision/"
                 target="_blank"
                 rel="noopener noreferrer"
-                style={{ color: "#0a0a0a", textDecoration: "underline" }}
+                style={{ color: "#F0B90B", textDecoration: "underline" }}
               >
                 The Giving Block
               </a>{" "}
