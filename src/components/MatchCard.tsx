@@ -295,34 +295,23 @@ export function MatchCard({ match }: { match: Match }) {
             </div>
           </div>
 
-          {/* Projects preview */}
-          <div style={{ background: "#141414", borderRadius: "8px", padding: "10px 12px", fontSize: "0.78rem" }}>
-            <div style={{ marginBottom: "4px", color: "#ccc" }}>
-              <span>{match.teamA.flag}</span>{" "}
-              {match.teamA.project.name}
-            </div>
-            <div style={{ color: "#ccc" }}>
-              <span>{match.teamB.flag}</span>{" "}
-              {match.teamB.project.name}
-            </div>
-          </div>
-
-          {/* Pool + backers */}
-          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-            <div>
-              <div style={{ fontSize: "0.6rem", color: "#F0B90B", textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: "2px", fontWeight: 700 }}>
-                Pool
+          {/* Total Pool + Backers — centered */}
+          <div style={{ display: "flex", justifyContent: "center", gap: "32px", alignItems: "center", padding: "8px 0" }}>
+            <div style={{ textAlign: "center" }}>
+              <div style={{ fontSize: "0.6rem", color: "#F0B90B", textTransform: "uppercase", letterSpacing: "0.1em", marginBottom: "4px", fontWeight: 700 }}>
+                Total Pool
               </div>
-              <div style={{ fontFamily: "monospace", fontWeight: 700, color: "#FFFFFF", fontSize: "1.15rem" }}>
+              <div style={{ fontFamily: "monospace", fontWeight: 900, color: "#FFFFFF", fontSize: "1.4rem" }}>
                 {totalSol.toFixed(2)} <span style={{ color: "#F0B90B" }}>SOL</span>
               </div>
             </div>
-            <div style={{ textAlign: "right" }}>
-              <div style={{ fontSize: "0.6rem", color: "#F0B90B", textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: "2px", fontWeight: 700 }}>
+            <div style={{ width: "1px", height: "36px", background: "#2a2a2a" }} />
+            <div style={{ textAlign: "center" }}>
+              <div style={{ fontSize: "0.6rem", color: "#F0B90B", textTransform: "uppercase", letterSpacing: "0.1em", marginBottom: "4px", fontWeight: 700 }}>
                 Backers
               </div>
-              <div style={{ fontFamily: "monospace", fontWeight: 700, color: "#FFFFFF", fontSize: "1.15rem" }}>
-                {backers} <span style={{ fontSize: "0.7rem", color: "#888" }}>people</span>
+              <div style={{ fontFamily: "monospace", fontWeight: 900, color: "#FFFFFF", fontSize: "1.4rem" }}>
+                {backers}
               </div>
             </div>
           </div>
